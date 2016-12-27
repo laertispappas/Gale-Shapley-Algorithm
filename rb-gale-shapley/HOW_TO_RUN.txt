@@ -1,0 +1,8 @@
+1. Install RUBY
+2. Go to bin dir
+    $ cd .../rb-gale-shapley-algorithm/bin
+3. Run mutcher script:
+    $ ruby matcher in1.csv in2.csv out.txt
+
+
+

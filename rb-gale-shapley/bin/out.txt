@@ -1,0 +1,4 @@
+Microsoft: Bill, Jeff, Larry
+Amazon: Alex, Mikel, Tom, Louis
+Facebook: Paul
+Oracle: Jack, Mark, Joe, Bob

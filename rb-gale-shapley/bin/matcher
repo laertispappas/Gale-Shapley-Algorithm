@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "gale_shapley"
+
+
+def validate!(companies, profs, out)
+  unless companies && File.exist?(companies)
+    raise StandardError, "Companies file #{companies} does not exist"
+  end
+
+  unless profs && File.exist?(profs)
+    raise StandardError, "Professionals file #{profs} does not exist"
+  end
+
+  if out.nil?
+    raise StandardError, "An output file must be provided"
+  end
+end
+
+companies_path = ARGV[0]
+professionals_path = ARGV[1]
+output_path = ARGV[2]
+
+validate!(companies_path, professionals_path, output_path)
+
+algo = GaleShapley.Run(:csv, companies_path, professionals_path)
+
+companies = algo.companies
+profs = algo.professionals
+
+File.open(output_path, "w") do |f|
+  companies.each do |_, c|
+    f.puts "#{c.id}: #{c.matches.join(', ')}"
+  end
+end
